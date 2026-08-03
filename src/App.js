@@ -1,23 +1,40 @@
-import logo from './logo.svg';
+import React from 'react';
+import { Routes, Route } from 'react-router-dom';
 import './App.css';
+import Header from './components/Header';
+import Hero from './components/Hero';
+import Marquee from './components/Marquee';
+import Manifesto from './components/Manifesto';
+import Catalog from './components/Catalog';
+import Bulk from './components/Bulk';
+import CallBand from './components/CallBand';
+import Footer from './components/Footer';
+import CatalogPage from './pages/CatalogPage';
+import ScrollToHash from './components/ScrollToHash';
 
 function App() {
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <ScrollToHash />
+      <Header />
+      <Routes>
+        <Route
+          path="/"
+          element={
+            <>
+              <Hero />
+              <Marquee />
+              <Bulk />
+              <Catalog />
+              <Manifesto/>
+              <CallBand />
+            </>
+          }
+        />
+        <Route path="/catalog" element={<CatalogPage />} />
+        <Route path="/catalog/:category" element={<CatalogPage />} />
+      </Routes>
+      <Footer />
     </div>
   );
 }
