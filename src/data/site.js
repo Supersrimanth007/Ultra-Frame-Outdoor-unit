@@ -1,6 +1,6 @@
 // Business constants for LUMEN RENTALS
 export const BRAND = {
-  name: "Ultra-Frame",
+  name: "Ultra Frame",
   suffix: "Outdoor Unit",
   tagline: "Cinematic Gear · Since 2011",
   phone: "+91 7904320282",

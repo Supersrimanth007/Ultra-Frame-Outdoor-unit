@@ -16,14 +16,14 @@ export default function Header() {
         <span className="dot" />
         <span>
           {BRAND.name}
-          <em style={{ color: "var(--crimson)", fontStyle: "italic" }}>.</em>{BRAND.suffix}
+          <em style={{ color: "var(--crimson)", fontStyle: "italic" }}> </em>{BRAND.suffix}
         </span>
-        <small>Est · 2025</small>
+        <small>Est · 2015</small>
       </Link>
 
       <nav data-testid="site-nav">
         <Link to="/" data-testid="nav-home">Home</Link>
-        <Link to="/catalog" data-testid="nav-catalog">Product List</Link>
+        <Link to="/catalog" data-testid="nav-catalog">Product</Link>
         <Link to="/#manifesto" data-testid="nav-manifesto">About us</Link>
         <Link to="/#contact" data-testid="nav-contact">Contact</Link>
       </nav>
