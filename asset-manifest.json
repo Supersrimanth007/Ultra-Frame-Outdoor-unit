@@ -1,0 +1,15 @@
+{
+  "files": {
+    "main.css": "/Ultra-Frame-Outdoor-unit/static/css/main.a826c112.css",
+    "main.js": "/Ultra-Frame-Outdoor-unit/static/js/main.d0b7e9de.js",
+    "static/js/373.691429ce.chunk.js": "/Ultra-Frame-Outdoor-unit/static/js/373.691429ce.chunk.js",
+    "index.html": "/Ultra-Frame-Outdoor-unit/index.html",
+    "main.a826c112.css.map": "/Ultra-Frame-Outdoor-unit/static/css/main.a826c112.css.map",
+    "main.d0b7e9de.js.map": "/Ultra-Frame-Outdoor-unit/static/js/main.d0b7e9de.js.map",
+    "373.691429ce.chunk.js.map": "/Ultra-Frame-Outdoor-unit/static/js/373.691429ce.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.a826c112.css",
+    "static/js/main.d0b7e9de.js"
+  ]
+}
