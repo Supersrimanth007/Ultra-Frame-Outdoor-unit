@@ -21,35 +21,35 @@ export const CATEGORIES = [
     tag: "Category / 01",
     title: "Camera Rigs",
     desc: "ARRI Alexa Mini LF, RED V-Raptor and Sony Venice paired with primes, zooms and gimbals for any narrative demand.",
-    img: "/images/camera.jpg"
+    img: "https://raw.githubusercontent.com/Supersrimanth007/Ultra-Frame-Outdoor-unit/refs/heads/main/public/Images/camera.jpg"
   },
   {
     slug: "lights",
     tag: "Category / 02",
     title: "Cinema Lights",
     desc: "HMI 1.2k–18k, ARRI Skypanels, Aputure 600D, Astera tubes — modular fixtures with full grip & diffusion inventory.",
-    img: "/images/Lights.jpg"
+    img: "https://github.com/Supersrimanth007/Ultra-Frame-Outdoor-unit/blob/main/public/Images/Lights.jpg?raw=true"
   },
   {
     slug: "cranes",
     tag: "Category / 03",
     title: "Action Cranes",
     desc: "Jimmy Jib, Techno-crane 30ft and remote-head cranes for elevated, sweeping camera moves that define blockbuster geometry.",
-    img: "/images/CraneL.jpg"
+    img: "https://github.com/Supersrimanth007/Ultra-Frame-Outdoor-unit/blob/main/public/Images/CraneL.jpg?raw=true"
   },
   {
     slug: "grip",
     tag: "Category / 04",
     title: "Grip & Rigging",
     desc: "Dollies, sliders, jibs, safety rigs, stands and truss — full grip trucks with experienced key-grip on call.",
-    img: "/images/grips.png"
+    img: "https://github.com/Supersrimanth007/Ultra-Frame-Outdoor-unit/blob/main/public/Images/grips.png?raw=true"
   },
   {
     slug: "power",
     tag: "Category / 05",
     title: "Power Control",
     desc: "Silent diesel generators, distribution boards and battery backup units — reliable on-set power for lights, cameras and grip gear on any location shoot.",
-    img: "/images/generate.jpg"
+    img: "https://github.com/Supersrimanth007/Ultra-Frame-Outdoor-unit/blob/main/public/Images/generate.jpg?raw=true"
   },
   
   {
@@ -57,7 +57,7 @@ export const CATEGORIES = [
     tag: "Category / 06",
     title: "LED Screens & Walls",
     desc: "Modular LED panels for virtual production, in-camera VFX and live-event backdrops. 2.6mm–6mm pitch, calibrated on-site.",
-    img: "/images/LED_SCREEN.jpg"
+    img: "https://raw.githubusercontent.com/Supersrimanth007/Ultra-Frame-Outdoor-unit/refs/heads/main/public/Images/LED_SCREEN.jpg"
   },
   
 ];
