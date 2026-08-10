@@ -1,4 +1,5 @@
-import { useRef } from "react";
+import { useRef, useEffect, useState } from "react";
+import { createPortal } from "react-dom";
 import { motion, useScroll, useTransform } from "framer-motion";
 import { ArrowUpRight } from "lucide-react";
 import { BRAND } from "../data/site";
@@ -11,13 +12,20 @@ export default function Hero() {
     target: ref,
     offset: ["start start", "end start"],
   });
+  
   const y = useTransform(scrollYProgress, [0, 1], [0, 180]);
   const scale = useTransform(scrollYProgress, [0, 1], [1.05, 1.18]);
   const opacity = useTransform(scrollYProgress, [0, 0.9], [1, 0.15]);
 
+  const [mounted, setMounted] = useState(false);
+  useEffect(() => {
+    setMounted(true);
+  }, []);
+
   return (
     <section className="hero" ref={ref} data-testid="hero-section">
-      <motion.div className="hero-bg" style={{ y, scale, opacity }} />
+      <motion.div className="hero-bg" style={{ y, scale, opacity }}>
+      </motion.div>
 
       <div className="hero-meta">
         <span className="rec">
@@ -28,11 +36,14 @@ export default function Hero() {
         <span>Aperture ƒ/1.8 · 24fps</span>
       </div>
 
-      <DiscountPopup
-        onCtaClick={() => {
-          window.location.href = "#contact";
-        }}
-      />
+      {mounted && createPortal(
+        <DiscountPopup
+          onCtaClick={() => {
+            window.location.href = "#contact";
+          }}
+        />,
+        document.body
+      )}
 
       <h1 className="hero-title" data-testid="hero-title">
         <span className="line">

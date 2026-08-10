@@ -1,0 +1,445 @@
+/* ============================================
+   1. VARIABLES & THEMING
+   ============================================ */
+   :root {
+    --bg: #0f1722;
+    --surface: #1a222f;
+    --surface-2: #242d3b;
+    --white: #ffffff;
+    --ash: rgba(255, 255, 255, 0.65);
+    --ash-strong: rgba(255, 255, 255, 0.85);
+    --hair-strong: rgba(255, 255, 255, 0.2);
+    --crimson: #C8102E;
+    
+    --font-display: 'Oswald', sans-serif; 
+    --font-body: 'Inter', sans-serif;
+    --font-mono: 'JetBrains Mono', monospace;
+  }
+  
+  $breakpoint-tablet: 900px;
+  $breakpoint-mobile: 600px;
+  $header-height: 80px;
+  
+  /* ============================================
+     2. GLOBAL RESETS (Crucial for Sticky)
+     ============================================ */
+  html, body, .App {
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    background-color: var(--bg);
+    color: var(--white);
+    font-family: var(--font-body);
+    -webkit-font-smoothing: antialiased;
+    
+    /* CRITICAL: overflow must be visible for sticky positioning to work */
+    overflow: visible; 
+  }
+  
+  /* ============================================
+     3. HEADER (Laptop View)
+     ============================================ */
+  .header {
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    background: rgba(15, 23, 34, 0.85);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    padding: 20px 40px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 20px;
+  
+    .brand {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      text-decoration: none;
+      font-family: var(--font-display);
+      font-weight: 800;
+      font-size: 20px;
+      color: var(--white);
+      white-space: nowrap;
+  
+      .dot {
+        width: 6px;
+        height: 6px;
+        background: var(--crimson);
+        border-radius: 50%;
+      }
+      small {
+        font-family: var(--font-mono);
+        font-size: 10px;
+        color: var(--ash);
+        letter-spacing: 0.1em;
+        margin-left: 10px;
+      }
+    }
+  
+    nav {
+      display: flex;
+      gap: 24px;
+      a {
+        color: var(--white);
+        text-decoration: none;
+        font-size: 14px;
+        font-weight: 500;
+        transition: color 0.2s ease;
+        &:hover { color: var(--crimson); }
+      }
+    }
+  
+    .cta-group {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+  
+      .icon-btn {
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+        padding: 8px 16px;
+        border-radius: 999px;
+        font-size: 14px;
+        font-weight: 600;
+        text-decoration: none;
+        transition: all 0.2s ease;
+        white-space: nowrap;
+  
+        &.wa {
+          background: transparent;
+          border: 1px solid rgba(255, 255, 255, 0.2);
+          color: var(--white);
+          &:hover { border-color: #25D366; color: #25D366; }
+        }
+        &.crimson {
+          background: var(--crimson);
+          color: var(--white);
+          border: 1px solid var(--crimson);
+          &:hover { background: transparent; color: var(--crimson); }
+        }
+      }
+    }
+  
+    /* Helper Utility */
+    .mobile-only { display: none; }
+  
+    /* Baseline Mobile Header Overrides */
+    @media (max-width: $breakpoint-tablet) {
+      padding: 16px 20px;
+      
+      nav, .brand small, .desktop-only {
+        display: none !important;
+      }
+      
+      .mobile-only { display: inline-block !important; }
+      
+      .cta-group {
+        gap: 10px;
+        .icon-btn { padding: 8px 12px; font-size: 13px; }
+      }
+    }
+  }
+  
+  /* ============================================
+     4. CATALOG PAGE LAYOUT
+     ============================================ */
+  .catalog-page {
+    padding-bottom: 80px;
+  
+    .catalog-head {
+      padding: 40px 20px;
+      max-width: 1400px;
+      margin: 0 auto;
+      h2 { font-family: var(--font-display); font-size: 48px; margin: 0; }
+      .eyebrow { font-family: var(--font-mono); color: var(--ash); letter-spacing: 0.1em; text-transform: uppercase; font-size: 12px; }
+    }
+  }
+  
+  .catalog-layout {
+    display: grid;
+    grid-template-columns: 260px 1fr;
+    gap: 40px;
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 0 20px;
+    align-items: start; 
+    overflow: visible;  
+  
+    @media (max-width: $breakpoint-tablet) {
+      grid-template-columns: 1fr;
+      gap: 24px;
+      padding: 0 16px;
+    }
+  }
+  
+  /* ============================================
+     5. SIDEBAR & FILTERS
+     ============================================ */
+  .catalog-sidebar {
+    position: sticky;
+    top: 100px; 
+    height: calc(100vh - 120px);
+    overflow-y: auto;
+    padding-right: 20px;
+  
+    &::-webkit-scrollbar { width: 6px; }
+    &::-webkit-scrollbar-thumb { background: var(--surface-2); border-radius: 8px; }
+    &::-webkit-scrollbar-thumb:hover { background: var(--crimson); }
+  
+    h5 {
+      font-family: var(--font-mono);
+      font-size: 12px;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--ash-strong);
+      margin: 0 0 14px;
+    }
+  
+    .search-bar {
+      position: relative;
+      margin-bottom: 24px;
+      .search-icon { position: absolute; left: 12px; top: 12px; color: var(--ash); }
+      input {
+        width: 100%;
+        background: rgba(255,255,255,0.04);
+        border: 1px solid var(--hair-strong);
+        border-radius: 8px;
+        padding: 11px 12px 11px 36px;
+        color: var(--white);
+        outline: none;
+        transition: border-color 0.2s;
+        &:focus { border-color: var(--crimson); }
+      }
+    }
+  
+    .filter-list {
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+      margin-bottom: 24px;
+    }
+  
+    .filter-pill {
+      text-align: left;
+      background: transparent;
+      border: 1px solid transparent;
+      border-radius: 8px;
+      padding: 11px 14px;
+      color: var(--white);
+      font-size: 14.5px;
+      cursor: pointer;
+      transition: all 220ms ease;
+  
+      &:hover { background: rgba(255,255,255,0.06); }
+      &.active { background: var(--crimson); border-color: var(--crimson); }
+    }
+  
+    .price-slider { width: 100%; accent-color: var(--crimson); margin-bottom: 24px;}
+    
+    .sort-select {
+      width: 100%;
+      background: rgba(255,255,255,0.04);
+      border: 1px solid var(--hair-strong);
+      border-radius: 8px;
+      padding: 11px 12px;
+      color: var(--white);
+      margin-bottom: 24px;
+      option { background: var(--surface-2); color: var(--white); }
+    }
+  
+    .clear-filters-btn {
+      width: 100%;
+      background: rgba(255,255,255,0.04);
+      border: 1px solid var(--hair-strong);
+      border-radius: 8px;
+      padding: 11px;
+      color: var(--ash-strong);
+      cursor: pointer;
+      &:hover { color: var(--white); background: rgba(255,255,255,0.08); }
+    }
+  
+    /* E-Commerce App Style Mobile Filter Ribbon */
+    @media (max-width: $breakpoint-tablet) {
+      position: relative;
+      top: 0;
+      height: auto;
+      padding-right: 0;
+      overflow-y: visible;
+  
+      h5 { margin-top: 16px !important; margin-bottom: 10px; }
+      
+      .filter-list {
+        flex-direction: row;
+        overflow-x: auto;
+        padding-bottom: 10px;
+        gap: 10px;
+        -ms-overflow-style: none;
+        scrollbar-width: none;
+        &::-webkit-scrollbar { display: none; }
+      }
+      
+      .filter-pill {
+        white-space: nowrap;
+        padding: 8px 16px;
+        text-align: center;
+      }
+      
+      .search-bar input, .sort-select { font-size: 16px; }
+    }
+  }
+  
+  /* ============================================
+     6. PRODUCT GRID & CARDS
+     ============================================ */
+  .catalog-results { display: block; overflow: visible; }
+  
+  .product-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 24px;
+  
+    @media (max-width: $breakpoint-mobile) {
+      grid-template-columns: repeat(2, 1fr);
+      gap: 12px;
+    }
+  }
+  
+  .product-card {
+    background: var(--surface);
+    border-radius: 12px;
+    border: 1px solid var(--hair-strong);
+    overflow: hidden;
+    text-decoration: none;
+    color: var(--white);
+    transition: transform 0.2s, border-color 0.2s;
+    display: flex;
+    flex-direction: column;
+  
+    &:hover {
+      transform: translateY(-4px);
+      border-color: rgba(255, 255, 255, 0.4);
+    }
+  
+    .thumb {
+      position: relative;
+      height: 200px;
+      background: #000;
+      img { width: 100%; height: 100%; object-fit: cover; opacity: 0.8; }
+      .tag {
+        position: absolute;
+        top: 12px;
+        left: 12px;
+        background: rgba(0,0,0,0.6);
+        padding: 4px 8px;
+        border-radius: 4px;
+        font-size: 10px;
+        font-family: var(--font-mono);
+        letter-spacing: 0.1em;
+        text-transform: uppercase;
+      }
+    }
+  
+    .body {
+      padding: 16px;
+      flex-grow: 1;
+      display: flex;
+      flex-direction: column;
+      
+      h4 { margin: 0 0 8px 0; font-family: var(--font-display); font-size: 20px; }
+      .desc { font-size: 13px; color: var(--ash); line-height: 1.5; margin-bottom: 16px; flex-grow: 1; }
+      .row { display: flex; justify-content: space-between; align-items: flex-end; }
+      .price { font-size: 16px; color: var(--crimson); b { font-weight: 700; color: var(--white); } }
+    }
+  
+    @media (max-width: $breakpoint-mobile) {
+      .thumb { height: 140px; }
+      .body { padding: 12px; }
+      .body h4 { font-size: 15px; }
+      .body .desc { display: none; }
+      .body .price { font-size: 14px; }
+    }
+  }
+  
+  /* ============================================
+     7. MOBILE KEBAB (3-DOTS) MENU & POP-UP
+     CRITICAL: Wrapped in @media to protect laptop view
+     ============================================ */
+  @media (max-width: $breakpoint-tablet) {
+    
+    .header {
+      height: auto;
+      min-height: 60px;
+      padding: 10px 12px;
+      border-radius: 16px;
+      justify-content: space-between; 
+    }
+  
+    /* Drop "Outdoor Unit" on phones so "Ultra Frame" stays centered and readable */
+    .header .brand .brand-suffix {
+      display: none;
+    }
+  
+    .header .brand {
+      font-size: 20px;
+      gap: 6px;
+    }
+  
+    /* The 3 Dots Toggle Button */
+    .mobile-menu-toggle {
+      background: transparent;
+      border: none;
+      padding: 6px 2px;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-left: 4px;
+      transition: 0.2s ease;
+    }
+    
+    .mobile-menu-toggle:active {
+      transform: scale(0.9);
+    }
+  
+    /* The Pop-Up Dropdown Box */
+    .mobile-pop-menu {
+      position: absolute;
+      top: 70px; /* Positions it right below the header */
+      right: 12px;
+      background: rgba(20, 25, 32, 0.98); 
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      border: 1px solid var(--hair-strong); 
+      border-radius: 16px;
+      padding: 20px 24px;
+      min-width: 180px;
+      box-shadow: 0 16px 32px rgba(0, 0, 0, 0.6);
+      z-index: 9999;
+    }
+  
+    /* Navigation Links inside Pop-Up */
+    .pop-nav-links {
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+    }
+  
+    .pop-nav-links a {
+      font-family: var(--font-display);
+      font-size: 18px;
+      font-weight: 600;
+      color: var(--white);
+      text-decoration: none;
+      transition: color 0.2s ease;
+    }
+    
+    /* Highlight on tap */
+    .pop-nav-links a:hover, 
+    .pop-nav-links a:active {
+      color: var(--crimson);
+    }
+  }

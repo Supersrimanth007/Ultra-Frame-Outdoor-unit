@@ -1,0 +1,99 @@
+/* Card visual styling only — layout is handled by inline Flexbox */
+.discount-popup {
+  width: 400px;
+  max-width: 90vw;
+  padding: 32px;
+  border-radius: 24px;
+  background: rgba(15, 23, 34, 0.92);
+  backdrop-filter: blur(24px);
+  -webkit-backdrop-filter: blur(24px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  box-shadow: 0 30px 60px -12px rgba(0, 0, 0, 0.8);
+  cursor: grab;
+}
+
+.discount-popup:active {
+  cursor: grabbing;
+}
+
+.discount-popup-close {
+  position: absolute;
+  top: 16px;
+  right: 16px;
+  width: 28px;
+  height: 28px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.08);
+  border: none;
+  color: rgba(255, 255, 255, 0.7);
+  cursor: pointer;
+  transition: background 200ms ease, color 200ms ease;
+}
+
+.discount-popup-close:hover {
+  background: rgba(255, 255, 255, 0.2);
+  color: #ffffff;
+}
+
+.discount-popup-eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  font-family: var(--font-mono);
+  font-size: 11px;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--crimson, #c8102e);
+  margin-bottom: 10px;
+}
+
+.eyebrow-dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--crimson, #c8102e);
+}
+
+.discount-popup-headline {
+  font-family: var(--font-display);
+  font-weight: 800;
+  font-style: italic;
+  font-size: 44px;
+  line-height: 1;
+  color: var(--white, #ffffff);
+  margin-bottom: 16px;
+}
+
+.discount-popup-headline .accent {
+  color: var(--crimson, #c8102e);
+}
+
+.discount-popup-desc {
+  font-size: 13px;
+  line-height: 1.55;
+  color: var(--ash, rgba(255, 255, 255, 0.65));
+  margin: 0 0 20px 0;
+}
+
+.discount-popup-cta {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: transparent;
+  border: 1px solid rgba(255, 255, 255, 0.35);
+  color: var(--white, #ffffff);
+  font-size: 12.5px;
+  font-weight: 600;
+  padding: 10px 18px;
+  border-radius: 999px;
+  cursor: pointer;
+  transition: background 200ms ease, border-color 200ms ease;
+}
+
+.discount-popup-cta:hover {
+  background: rgba(255, 255, 255, 0.12);
+  border-color: rgba(255, 255, 255, 0.6);
+}

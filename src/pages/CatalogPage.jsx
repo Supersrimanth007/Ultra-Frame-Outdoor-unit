@@ -1,8 +1,10 @@
 import { useState, useMemo } from "react";
 import { useParams, useNavigate } from "react-router-dom";
 import { motion } from "framer-motion";
-import { Search, ArrowUpRight, X } from "lucide-react";
+import { Search, ArrowUpRight, X,horizontal } from "lucide-react";
 import { PRODUCTS, CATEGORIES, BRAND } from "../data/site";
+import { GlitchBlink } from "../components/ui/GlitchBlink";
+
 
 const fmt = (n) => `₹${n.toLocaleString("en-IN")}`;
 const MAX_PRICE = Math.max(...PRODUCTS.map((p) => p.price));
@@ -46,8 +48,7 @@ export default function CatalogPage() {
       <div className="catalog-head">
         <div>
           <div className="eyebrow" style={{ marginBottom: 12 }}>§ Full Inventory</div>
-          <h2><em>{activeMeta ? `${activeMeta.title}.` : "All Gear."}</em></h2>
-        </div>
+          <h2> <em>{activeMeta ? <GlitchBlink text={`${activeMeta.title}.`} color="var(--black)" /> :  <GlitchBlink text="All Gear." color="var(--black)" />}</em></h2>  </div>
       </div>
 
       <div className="catalog-layout">

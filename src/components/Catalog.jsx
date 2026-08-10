@@ -5,7 +5,8 @@ import { CATEGORIES } from "../data/site";
 
 const MotionLink = motion(Link);
 
-const cardVariants = {
+// Renamed animation variant for clarity
+const fadeUpVariants = {
   hidden: { opacity: 0, y: 60 },
   visible: (i) => ({
     opacity: 1,
@@ -14,19 +15,21 @@ const cardVariants = {
   }),
 };
 
-export default function Catalog() {
+export default function EquipmentCategories() {
   return (
-    <section className="catalog" id="catalog" data-testid="catalog-section">
-      <div className="catalog-head">
+    <section className="categories-section" id="equipment-categories" data-testid="categories-section">
+      <div className="categories-header">
         <div>
-          <div className="eyebrow" style={{ marginBottom: 18 }}>§ Product Categories</div>
+          <div className="section-eyebrow" style={{ marginBottom: 18 }}>
+            § Product Categories
+          </div>
           <motion.h2
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, margin: "-80px" }}
             transition={{ duration: 0.9, ease: [0.22, 1, 0.36, 1] }}
           >
-            Access the <em>Inventory</em> <br  /> Filter your loadout.
+            Access the <em>Inventory</em> <br /> Filter your loadout.
           </motion.h2>
         </div>
         <motion.p
@@ -40,27 +43,30 @@ export default function Catalog() {
         </motion.p>
       </div>
 
-      <div className="product-grid category-grid" data-testid="category-grid">
+      <div className="equipment-grid" data-testid="equipment-grid">
         {CATEGORIES.map((c, i) => (
           <MotionLink
             key={c.slug}
             to={`/catalog/${c.slug}`}
-            className="product-card"
+            className="category-card"
             custom={i}
             initial="hidden"
             whileInView="visible"
             viewport={{ once: true, margin: "-80px" }}
-            variants={cardVariants}
+            variants={fadeUpVariants}
             data-testid={`category-card-${c.slug}`}
           >
-            <div className="thumb">
+            <div className="category-thumb">
               <img src={c.img} alt={c.title} loading="lazy" />
-              <span className="index">0{i + 1} / {String(CATEGORIES.length).padStart(2, "0")}</span>
+              <span className="category-index">
+                0{i + 1} / {String(CATEGORIES.length).padStart(2, "0")}
+              </span>
             </div>
-            <div className="body">
+            
+            <div className="category-content">
               <h4>{c.title}.</h4>
-              <p className="desc">{c.desc}</p>
-              <span className="arrow-out" aria-hidden="true">
+              <p className="category-desc">{c.desc}</p>
+              <span className="category-arrow" aria-hidden="true">
                 <ArrowUpRight size={18} />
               </span>
             </div>
