@@ -97,7 +97,7 @@ export default function Manifesto() {
         transition={{ duration: 2.5, ease: "easeInOut" }}
       >
         <video
-          src="/bg_video.mp4" 
+          src="./bg_video.mp4" 
           autoPlay
           loop
           muted
