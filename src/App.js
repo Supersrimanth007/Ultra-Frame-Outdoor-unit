@@ -30,7 +30,7 @@ function MobileEntryRedirect() {
     if (isMobileOrTablet) {
       navigate('/catalog', { replace: true });
     }
-    // eslint-disable-next-line react-hooks/exhaustive-deps
+    // eslint-disable-next-line
   }, []); // run once on mount only — resizing the window later shouldn't yank the user around
 
   return null;
