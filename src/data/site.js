@@ -9,8 +9,8 @@ export const BRAND = {
   whatsappHref: "https://wa.me/917904320282?text=Hi%20Ultra-Frame%20-%20I'd%20like%20to%20rent%20cinema%20gear",
   address: "1/215 Ganga Nagar 2nd Cross-Street Maduravoyal · Chennai 600095",
   hours: "24 / 7 · On-set support",
-  email: "narayanannarayanan15644@gmail.com",
-  emailHref: "mailto:narayanannarayanan15644@gmail.com",
+  email: "ultraframe01@gmail.com",
+  emailHref: "mailto:ultraframe01@gmail.com",
 };
 
 // Top-level catalog categories — shown as cards on the homepage Catalog section.
